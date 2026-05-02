@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Impacto Humano | TechEarth</title>
+    <style>
+        .impacto-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 10% 80px;
+        }
+
+        .impacto-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .impacto-header h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+            letter-spacing: -0.08em;
+        }
+
+        .impacto-header p {
+            color: var(--muted);
+            font-size: 1.1rem;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .resumo-section {
+            background: rgba(102, 255, 179, 0.08);
+            border: 1px solid rgba(102, 255, 179, 0.16);
+            border-radius: 28px;
+            padding: 40px;
+            margin-bottom: 60px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .resumo-section h2 {
+            color: var(--accent);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            margin-top: 0;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .resumo-section p {
+            color: var(--muted);
+            line-height: 1.9;
+            margin: 12px 0;
+        }
+
+        .resumo-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .resumo-list li {
+            color: var(--text);
+            margin: 12px 0;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .resumo-list li::before {
+            content: '→';
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+        }
+
+        .conceitos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .conceito-card {
+            background: rgba(255, 255, 255, 0.045);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 28px;
+            padding: 28px;
+            backdrop-filter: blur(18px);
+        }
+
+        .conceito-card h3 {
+            margin: 0 0 16px;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .conceito-card p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.9;
+        }
+
+        .veredito-card {
+            background: rgba(102, 255, 179, 0.08);
+            border: 1px solid rgba(102, 255, 179, 0.16);
+            border-radius: 28px;
+            padding: 38px;
+            margin-top: 40px;
+            color: var(--text);
+            line-height: 1.9;
+        }
+
+        .veredito-card h2 {
+            margin: 0 0 18px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.045);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 28px;
+            padding: 32px;
+            backdrop-filter: blur(18px);
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2.6rem;
+            font-weight: 900;
+            color: var(--accent);
+            margin-bottom: 8px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .metric-label {
+            color: var(--muted);
+            font-size: 0.95rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .dados-table {
+            background: rgba(255, 255, 255, 0.045);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 28px;
+            overflow: hidden;
+            backdrop-filter: blur(18px);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .dados-table table {
+            width: 100%;
+            border-collapse: collapse;
+            padding: 0;
+        }
+
+        .dados-table th {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 18px;
+            text-align: left;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            color: var(--accent);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .dados-table td {
+            padding: 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--text);
+        }
+
+        .dados-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(102, 255, 179, 0.15);
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin-bottom: 24px;
+        }
+
+        .btn-back:hover {
+            background: rgba(102, 255, 179, 0.25);
+            transform: translateX(-4px);
+        }
+
+        .download-link {
+            color: var(--accent);
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(102, 255, 179, 0.6);
+            padding-bottom: 2px;
+        }
+
+        .download-link:hover {
+            color: #d9ffe0;
+        }
+
+        @media (max-width: 770px) {
+            .impacto-container {
+                padding: 100px 7% 60px;
+            }
+
+            .impacto-header h1 {
+                font-size: 2rem;
+            }
+
+            .metric-value {
+                font-size: 2.2rem;
+            }
+
+            #grafico {
+                height: 350px;
+            }
+
+            .dados-table th,
+            .dados-table td {
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="impacto-container">
+        <a href="/projetos" class="btn-back">←</a>
+
+        <div class="impacto-header">
+            <h1>Inteligência Ambiental</h1>
+            <p>Dados para a Sustentabilidade Corporativa</p>
+        </div>
+
+        <div class="resumo-section">
+            <h2>O Que é Este Projeto?</h2>
+            <p>Uma análise de impacto ecológico que converte dados brutos em painéis de decisão estratégica. O objetivo é mapear, monitorar e otimizar o consumo de recursos naturais e a emissão de poluentes, mostrando como a gestão ambiental eficiente reduz custos operacionais e mitiga riscos no mercado financeiro.</p>
+            <p style="color: var(--muted); font-size: 0.95rem; margin-top: 18px;">Dados apresentados são fictícios para demonstração, inspirados em padrões reais de sustentabilidade corporativa.</p>
+            
+            <h2 style="margin-top: 28px;">Por Que Importa?</h2>
+            <ul class="resumo-list">
+                <li><strong>Eficiência Operacional:</strong> A otimização do uso de água e energia reduz diretamente o custo fixo da operação</li>
+                <li><strong>Atratividade Financeira:</strong> Fundos de investimento avaliam o risco ambiental antes de alocar capital</li>
+                <li><strong>Conformidade:</strong> Antecipar-se a regulamentações ambientais evita multas severas</li>
+                <li><strong>Valor de Marca:</strong> O mercado prioriza cadeias de suprimentos com pegada ecológica neutra</li>
+            </ul>
+        </div>
+
+        <div class="conceitos-grid">
+            <div class="conceito-card">
+                <h3>Pegada de Carbono</h3>
+                <p>Medição das emissões de Gases de Efeito Estufa (Escopos 1, 2 e 3) em toneladas de CO2 equivalente. Mostra o impacto climático da operação.</p>
+            </div>
+            <div class="conceito-card">
+                <h3>Intensidade Energética</h3>
+                <p>Relação entre consumo de energia (kWh) e receita gerada. Indica eficiência energética por unidade de produção.</p>
+            </div>
+            <div class="conceito-card">
+                <h3>Conceitos Abordados</h3>
+                <p>O projeto cruza engenharia de dados com gestão ambiental, utilizando pipelines automatizados para alimentar painéis modernos com indicadores financeiros.</p>
+            </div>
+        </div>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-value">{{ "{:,.0f}".format(media_pegada_carbono) }}</div>
+                <div class="metric-label">Pegada Carbono Média (ton CO2)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">{{ "{:.1f}".format(media_intensidade_energetica) }}</div>
+                <div class="metric-label">Intensidade Energética (kWh/R$1M)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">{{ "{:.1f}".format(media_gestao_residuos) }}%</div>
+                <div class="metric-label">Gestão Resíduos Média</div>
+            </div>
+        </div>
+
+        <div class="dados-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Empresa</th>
+                        <th>Pegada Carbono (ton CO2)</th>
+                        <th>Intensidade Energética</th>
+                        <th>Gestão Resíduos</th>
+                        <th>ROI Sustentabilidade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for empresa in empresas %}
+                    <tr>
+                        <td><strong>{{ empresa['nome'] }}</strong></td>
+                        <td>{{ "{:,.0f}".format(empresa['pegada_carbono_ton_co2']) }}</td>
+                        <td>{{ "{:.1f}".format(empresa['intensidade_energetica_kwh_receita']) }} kWh/R$1M</td>
+                        <td>{{ "{:.1f}".format(empresa['gestao_residuos_percent']) }}%</td>
+                        <td>{{ "{:.1f}".format(empresa['roi_sustentabilidade']) }}%</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="veredito-card">
+            <h2>Veredito</h2>
+            <p>A sustentabilidade deixou de ser apenas marketing verde. Ao unir a ciência de dados para negócios com o conhecimento técnico de métricas ambientais, este projeto demonstra que a preservação ecológica e a rentabilidade caminham juntas. Empresas que monitoram sua pegada ambiental de forma transparente garantem vantagem competitiva, atraem capital sustentável e garantem a longevidade da sua operação.</p>
+        </div>
+
+        <div style="margin-top: 32px; text-align: center;">
+            <a href="/impacto/resumo.doc" class="download-link">Download resumo</a>
+        </div>
+    </div>
+</body>
+</html>

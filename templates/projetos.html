@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Projetos | TechEarth</title>
+    <style>
+        .projetos-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 10% 80px;
+        }
+
+        .projetos-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .projetos-header h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+            letter-spacing: -0.08em;
+        }
+
+        .projetos-header p {
+            color: var(--muted);
+            font-size: 1.1rem;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .projetos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-bottom: 60px;
+            justify-items: center;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .projeto-item {
+            background: rgba(255, 255, 255, 0.045);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 32px;
+            padding: 48px;
+            backdrop-filter: blur(18px);
+            transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
+            box-shadow: 0 18px 60px rgba(0, 0, 0, 0.12);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 360px;
+            width: 100%;
+        }
+
+        .projeto-item:hover {
+            transform: translateY(-8px);
+            background: rgba(102, 255, 179, 0.12);
+            border-color: rgba(102, 255, 179, 0.28);
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.2);
+        }
+
+        .projeto-item h3 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .projeto-item p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.8;
+            flex-grow: 1;
+        }
+
+        .projeto-item a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.25s ease;
+        }
+
+        .projeto-item a:hover {
+            transform: translateX(4px);
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(102, 255, 179, 0.15);
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin-bottom: 24px;
+        }
+
+        .btn-back:hover {
+            background: rgba(102, 255, 179, 0.25);
+            transform: translateX(-4px);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 80px 40px;
+            background: rgba(255, 255, 255, 0.045);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 32px;
+            backdrop-filter: blur(18px);
+        }
+
+        .empty-state h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--accent);
+        }
+
+        .empty-state p {
+            color: var(--muted);
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        @media (max-width: 770px) {
+            .projetos-container {
+                padding: 100px 7% 60px;
+            }
+
+            .projetos-header h1 {
+                font-size: 2rem;
+            }
+
+            .projetos-grid {
+                gap: 24px;
+            }
+
+            .projeto-item {
+                padding: 32px;
+            }
+
+            .projeto-item h3 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="projetos-container">
+        <a href="/" class="btn-back">←</a>
+
+        <div class="projetos-header">
+            <h1>Projetos</h1>
+            <p style="text-align: center;">Soluções desenvolvidas que combinam inteligência estratégica com impacto real no negócio.</p>
+        </div>
+
+        <div class="projetos-grid">
+            <!-- Impacto Humano - Projeto ativo -->
+            <div class="projeto-item">
+                <h3>Inteligência Ambiental</h3>
+                <p>Análise de impacto ecológico que converte dados brutos em insights estratégicos. Foca em emissões, consumo de recursos e eficiência ambiental.</p>
+                <a href="/impacto">Explorar projeto →</a>
+            </div>
+
+            <!-- Espaço para próximos projetos -->
+            <div class="projeto-item" style="opacity: 0.6;">
+                <h3>Em Desenvolvimento</h3>
+                <p>Novas análises estão sendo criadas para ampliar a capacidade de tomada de decisão sustentável.</p>
+                <span style="color: var(--muted); font-size: 0.9rem;">Em breve...</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

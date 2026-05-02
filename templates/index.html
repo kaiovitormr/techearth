@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>TechEarth | Inteligência Estratégica</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">TECHEARTH</div>
+    </nav>
+
+    <section id="inicio">
+        <h1>Dados com propósito. Impacto com clareza.</h1>
+        <p class="subtitle">Transforme inteligência e capital humano em decisões mais seguras e alinhadas ao futuro.</p>
+        <div class="nav-buttons">
+            <a href="/projetos" class="btn-interaction">Ver projetos</a>
+            <a href="#nossa-historia" class="btn-secondary">Nossa história</a>
+        </div>
+    </section>
+
+    <section id="nossa-historia" class="light-section">
+        <div class="content-block">
+            <h2 class="section-title">Nossa Origem</h2>
+            <p>Nascida no ecossistema de inovação da Universidade Federal da Paraíba (UFPB), a TechEarth é o ponto de convergência entre tecnologia e sustentabilidade. Fundada por Kaio Vitor Martins da Silva (Ciência de Dados para Negócios) e Adisson da Silva Soares dos Santos (Engenharia Ambiental), a plataforma foi criada para resolver um dos maiores desafios do mercado atual: transformar a complexidade dos dados em inteligência acionável. Com foco absoluto em Business Intelligence (BI) e Engenharia de sustentabilidade, nossa missão é estruturar informações estratégicas que gerem valor tangível para as corporações, a sociedade e o meio ambiente.</p>
+        </div>
+    </section>
+
+    <section id="fundadores">
+        <div class="content-block">
+            <h2 class="section-title">Quem Faz a TechEarth</h2>
+            <div class="founders-grid">
+                <div class="founder-card">
+                    <img src="{{ url_for('static', filename='images/kaio-vitor.jpeg') }}" alt="Kaio Vitor" class="founder-image">
+                    <h3>Kaio Vitor</h3>
+                    <p>CoFundador</p>
+                </div>
+                <div class="founder-card">
+                    <img src="{{ url_for('static', filename='images/adisson-silva.jpeg') }}" alt="Adisson Silva" class="founder-image">
+                    <h3>Adisson Silva</h3>
+                    <p>CoFundador</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>techearthofc@gmail.com</p>
+        <div style="margin-top: 20px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+            <a href="https://www.linkedin.com/in/kaio-vitor-2769a5386" target="_blank" class="social-link">LinkedIn Kaio Vitor</a>
+            <a href="https://www.linkedin.com/in/adisson-silva-001422407" target="_blank" class="social-link">LinkedIn Adisson Silva</a>
+        </div>
+        <p style="margin-top: 40px; font-size: 0.7rem; color: #ccc;">João Pessoa, PB | © 2026 TechEarth.</p>
+    </footer>
+</body>
+</html>
