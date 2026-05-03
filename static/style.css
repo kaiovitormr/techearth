@@ -325,68 +325,85 @@ footer .social-link {
 }
 
 @media (max-width: 470px) {
-    /* Centraliza a Barra de Navegação */
+    /* 1. Centralização Geral da Página e do Texto */
+    .impacto-container {
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        text-align: center;
+    }
+
+    .resumo-section, .veredito-card {
+        width: 90%; 
+        margin: 0 auto 20px auto; 
+        box-sizing: border-box;
+    }
+
+    /* 2. Barra de Navegação */
     .navbar {
         width: 100%;
         flex-direction: column;
         align-items: center;
         text-align: center;
         gap: 10px;
+        padding: 15px 0;
     }
     
-    /* Corrige o transbordamento das fotos dos cofundadores */
-    /* Note a correção de 'contanier' para 'container' */
+    /* 3. Fotos dos cofundadores */
     .founder-container { 
         display: flex;
-        flex-direction: column; /* Coloca um embaixo do outro no celular */
-        align-items: center;    /* Centraliza horizontalmente */
+        flex-direction: column !important; 
+        align-items: center;    
+        justify-content: center;
         gap: 25px;
         width: 100%;
         margin: 0 auto;
     }
 
-    /* Ajusta o espaçamento das seções para não esmagar o texto */
+    /* 4. Títulos e Seções Gerais */
     section {
         padding: 40px 5%;
-        text-align: center; /* Garante que os parágrafos também centralizem */
-    }
-
-    /* Faz o título TechEarth caber na tela do celular */
-    h1 {
-        font-size: clamp(2.5rem, 8vw, 3.5rem);
-        text-align: center;
         width: 100%;
-    }
-
-    .light-section {
-        padding: 48px 24px;
-    }
-
-    .project-grid {
         display: flex;
         flex-direction: column;
-        gap: 18px;
-    .metrics-grid {
+        align-items: center;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+        text-align: center;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* 5. Grades e Cards */
+    .project-grid, .metrics-grid {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 18px;
     }
 
     .metric-card {
-        width: 100%;
-        max-width: 300px;
+        width: 95%;
+        max-width: 320px;
     }
 
-    /* 2. Ajuste da tabela para não cortar o ROI */
+    /* 6. A Tabela que desliza (Para ver o ROI e nomes das empresas) */
     .dados-table {
         width: 100%;
-        overflow-x: auto; /* Isso cria a "mágica" de deslizar a tabela */
+        overflow-x: auto; 
+        display: block;
         -webkit-overflow-scrolling: touch;
-        margin-top: 20px;
+        margin: 20px 0;
+        border: 1px solid #ddd;
     }
 
     table {
-        min-width: 600px; /* Garante que os dados tenham espaço para respirar */
+        min-width: 550px; /* Garante que os dados tenham espaço para aparecer */
     }
-}}
+}

@@ -21,16 +21,21 @@ def projetos():
 
 @app.route('/impacto')
 def impacto():
-    # Crie uma lista vazia ou com dados para o loop não quebrar
-    empresas_demo = [
-        {'nome': 'Empresa A', 'pegada_carbono_ton_co2': 150, 'intensidade_energetica_kwh_receita': 12.5, 'gestao_residuos_percent': 85, 'roi_sustentabilidade': 18.2}
+    # Aqui é onde você define a lista que vai aparecer na tabela
+    lista_empresas = [
+        {'nome': 'EcoLogic Tech', 'pegada_carbono_ton_co2': 120, 'intensidade_energetica_kwh_receita': 10.2, 'gestao_residuos_percent': 92, 'roi_sustentabilidade': 15.4},
+        {'nome': 'BioSystems Store', 'pegada_carbono_ton_co2': 85, 'intensidade_energetica_kwh_receita': 8.5, 'gestao_residuos_percent': 88, 'roi_sustentabilidade': 12.1},
+        {'nome': 'Green Solutions', 'pegada_carbono_ton_co2': 210, 'intensidade_energetica_kwh_receita': 14.8, 'gestao_residuos_percent': 75, 'roi_sustentabilidade': 19.5},
+        {'nome': 'Pure Water Corp', 'pegada_carbono_ton_co2': 45, 'intensidade_energetica_kwh_receita': 5.2, 'gestao_residuos_percent': 95, 'roi_sustentabilidade': 8.9},
+        {'nome': 'Future Energy', 'pegada_carbono_ton_co2': 320, 'intensidade_energetica_kwh_receita': 18.1, 'gestao_residuos_percent': 68, 'roi_sustentabilidade': 22.3}
     ]
     
+    # Mandando a lista e as médias para o site
     return render_template('impacto.html', 
-                           empresas=empresas_demo, 
-                           media_pegada_carbono=150, 
-                           media_intensidade_energetica=12.5, 
-                           media_gestao_residuos=85)
+                           empresas=lista_empresas, 
+                           media_pegada_carbono=156, 
+                           media_intensidade_energetica=11.4, 
+                           media_gestao_residuos=83.6)
 
 # NOVA ROTA PARA PDF (Substituindo a de .doc)
 @app.route('/impacto/resumo.pdf')
