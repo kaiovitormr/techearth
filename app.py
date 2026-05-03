@@ -19,19 +19,18 @@ def index():
 def projetos():
     return render_template('projetos.html')
 
-@app.route('/impacto') # Ou o nome da sua rota
+@app.route('/impacto')
 def impacto():
-    # VOCÊ PRECISA DEFINIR ESSAS VARIÁVEIS AQUI:
-    empresas = [] # Ou os seus dados reais
-    media_pegada_carbono = 0 
-    media_intensidade_energetica = 0
-    media_gestao_residuos = 0
+    # Crie uma lista vazia ou com dados para o loop não quebrar
+    empresas_demo = [
+        {'nome': 'Empresa A', 'pegada_carbono_ton_co2': 150, 'intensidade_energetica_kwh_receita': 12.5, 'gestao_residuos_percent': 85, 'roi_sustentabilidade': 18.2}
+    ]
     
     return render_template('impacto.html', 
-                           empresas=empresas, 
-                           media_pegada_carbono=media_pegada_carbono,
-                           media_intensidade_energetica=media_intensidade_energetica,
-                           media_gestao_residuos=media_gestao_residuos)
+                           empresas=empresas_demo, 
+                           media_pegada_carbono=150, 
+                           media_intensidade_energetica=12.5, 
+                           media_gestao_residuos=85)
 
 # NOVA ROTA PARA PDF (Substituindo a de .doc)
 @app.route('/impacto/resumo.pdf')
