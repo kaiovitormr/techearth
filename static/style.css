@@ -366,5 +366,27 @@ footer .social-link {
         display: flex;
         flex-direction: column;
         gap: 18px;
+    .metrics-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
     }
-}
+
+    .metric-card {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    /* 2. Ajuste da tabela para não cortar o ROI */
+    .dados-table {
+        width: 100%;
+        overflow-x: auto; /* Isso cria a "mágica" de deslizar a tabela */
+        -webkit-overflow-scrolling: touch;
+        margin-top: 20px;
+    }
+
+    table {
+        min-width: 600px; /* Garante que os dados tenham espaço para respirar */
+    }
+}}
