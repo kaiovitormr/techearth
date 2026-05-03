@@ -168,6 +168,7 @@ h1 {
 #fundadores .content-block {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
     text-align: center;
 }
@@ -324,28 +325,46 @@ footer .social-link {
 }
 
 @media (max-width: 470px) {
+    /* Centraliza a Barra de Navegação */
     .navbar {
-        width: min(100%, 92%);
+        width: 100%;
         flex-direction: column;
-        gap: 14px;
-        padding: 16px 22px;
-        display:flex;
-        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    /* Corrige o transbordamento das fotos dos cofundadores */
+    /* Note a correção de 'contanier' para 'container' */
+    .founder-container { 
+        display: flex;
+        flex-direction: column; /* Coloca um embaixo do outro no celular */
+        align-items: center;    /* Centraliza horizontalmente */
+        gap: 25px;
+        width: 100%;
+        margin: 0 auto;
     }
 
+    /* Ajusta o espaçamento das seções para não esmagar o texto */
     section {
-        padding: 0 7%;
+        padding: 40px 5%;
+        text-align: center; /* Garante que os parágrafos também centralizem */
     }
 
+    /* Faz o título TechEarth caber na tela do celular */
     h1 {
-        font-size: clamp(3rem, 10vw, 4.5rem);
+        font-size: clamp(2.5rem, 8vw, 3.5rem);
+        text-align: center;
+        width: 100%;
     }
 
     .light-section {
-        padding: 48px 32px;
+        padding: 48px 24px;
     }
 
     .project-grid {
+        display: flex;
+        flex-direction: column;
         gap: 18px;
     }
 }
