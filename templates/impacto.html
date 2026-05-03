@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=100">
     <title>Impacto Humano | TechEarth</title>
     <style>
         .impacto-container {
@@ -231,27 +231,53 @@
             color: #d9ffe0;
         }
 
-        @media (max-width: 770px) {
+        /* 1. Este bloco controla TUDO no celular */
+        @media screen and (max-width: 480px) {
+            
             .impacto-container {
-                padding: 100px 7% 60px;
+                padding: 80px 4% 40px; /* Dá mais espaço para os dados aparecerem */
+                display: flex;
+                flex-direction: column;
+                align-items: center; /* Centraliza tudo */
             }
 
-            .impacto-header h1 {
-                font-size: 2rem;
+            /* 2. Tabela: Onde os nomes e o ROI estão "escondidos" */
+            .dados-table {
+                width: 100% !important;
+                overflow-x: auto !important; /* FAZ O DESLIZE LATERAL FUNCIONAR */
+                display: block;
+                -webkit-overflow-scrolling: touch;
+                margin: 20px 0;
+                border-radius: 12px;
+            }
+
+            table {
+                min-width: 600px; /* Obriga a tabela a ser larga para você poder 'navegar' nela */
+            }
+
+            /* 3. Ajuste dos Cards (Carbono, Energia, Resíduos) */
+            .metrics-grid {
+                grid-template-columns: 1fr !important; /* Empilha um em cima do outro */
+                width: 100%;
+                gap: 15px;
+            }
+
+            .metric-card {
+                padding: 20px;
+                width: 100%;
+                box-sizing: border-box;
             }
 
             .metric-value {
-                font-size: 2.2rem;
+                font-size: 1.8rem; /* Diminui o número para não cortar */
             }
 
-            #grafico {
-                height: 350px;
-            }
-
-            .dados-table th,
-            .dados-table td {
-                padding: 12px;
-                font-size: 0.9rem;
+            /* 4. Resumo e Veredito centralizados */
+            .resumo-section, .veredito-card {
+                padding: 20px;
+                width: 100%;
+                box-sizing: border-box;
+                text-align: center;
             }
         }
     </style>

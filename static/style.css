@@ -324,86 +324,38 @@ footer .social-link {
     text-transform: uppercase;
 }
 
-@media (max-width: 470px) {
-    /* 1. Centralização Geral da Página e do Texto */
-    .impacto-container {
-        width: 100%;
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        align-items: center; 
+@media screen and (max-width: 480px) {
+    /* 1. Centraliza o topo (Dados com propósito...) */
+    #inicio {
+        padding: 60px 20px !important;
+        text-align: center !important;
+    }
+
+    /* 2. CORREÇÃO DAS FOTOS (O nome certo é founders-grid) */
+    .founders-grid {
+        display: flex !important;
+        flex-direction: column !important; /* Coloca um embaixo do outro */
+        align-items: center !important;    /* Centraliza na tela */
+        gap: 30px !important;
+        width: 100% !important;
+    }
+
+    .founder-card {
+        width: 100% !important;
+        max-width: 250px; /* Garante que a foto não fique gigante */
         text-align: center;
     }
 
-    .resumo-section, .veredito-card {
-        width: 90%; 
-        margin: 0 auto 20px auto; 
-        box-sizing: border-box;
+    .founder-image {
+        width: 150px !important; /* Ajusta o tamanho da foto no celular */
+        height: 150px !important;
+        border-radius: 50%;
+        object-fit: cover;
     }
 
-    /* 2. Barra de Navegação */
-    .navbar {
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 10px;
-        padding: 15px 0;
-    }
-    
-    /* 3. Fotos dos cofundadores */
-    .founder-container { 
-        display: flex;
-        flex-direction: column !important; 
-        align-items: center;    
-        justify-content: center;
-        gap: 25px;
-        width: 100%;
-        margin: 0 auto;
-    }
-
-    /* 4. Títulos e Seções Gerais */
-    section {
-        padding: 40px 5%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    h1 {
-        font-size: 2.2rem;
-        text-align: center;
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    /* 5. Grades e Cards */
-    .project-grid, .metrics-grid {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        gap: 18px;
-    }
-
-    .metric-card {
-        width: 95%;
-        max-width: 320px;
-    }
-
-    /* 6. A Tabela que desliza (Para ver o ROI e nomes das empresas) */
-    .dados-table {
-        width: 100%;
-        overflow-x: auto; 
-        display: block;
-        -webkit-overflow-scrolling: touch;
-        margin: 20px 0;
-        border: 1px solid #ddd;
-    }
-
-    table {
-        min-width: 550px; /* Garante que os dados tenham espaço para aparecer */
+    /* 3. Ajusta o texto da "Nossa Origem" */
+    .content-block {
+        padding: 20px !important;
+        text-align: center !important;
     }
 }
