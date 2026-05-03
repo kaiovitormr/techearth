@@ -19,24 +19,19 @@ def index():
 def projetos():
     return render_template('projetos.html')
 
-@app.route('/impacto')
+@app.route('/impacto') # Ou o nome da sua rota
 def impacto():
-    conn = get_db_connection()
-    df = pd.read_sql_query('SELECT nome, pegada_carbono_ton_co2, intensidade_energetica_kwh_receita, gestao_residuos_percent, eficiencia_hidrica_m3, valor_mercado_bi, roi_sustentabilidade FROM indicadores', conn)
-    conn.close()
-    
-    # Calcular médias dos KPIs ambientais
-    media_pegada_carbono = df['pegada_carbono_ton_co2'].mean()
-    media_intensidade_energetica = df['intensidade_energetica_kwh_receita'].mean()
-    media_gestao_residuos = df['gestao_residuos_percent'].mean()
-    media_eficiencia_hidrica = df['eficiencia_hidrica_m3'].mean()
+    # VOCÊ PRECISA DEFINIR ESSAS VARIÁVEIS AQUI:
+    empresas = [] # Ou os seus dados reais
+    media_pegada_carbono = 0 
+    media_intensidade_energetica = 0
+    media_gestao_residuos = 0
     
     return render_template('impacto.html', 
-                          media_pegada_carbono=media_pegada_carbono,
-                          media_intensidade_energetica=media_intensidade_energetica,
-                          media_gestao_residuos=media_gestao_residuos,
-                          media_eficiencia_hidrica=media_eficiencia_hidrica,
-                          empresas=df.to_dict(orient='records'))
+                           empresas=empresas, 
+                           media_pegada_carbono=media_pegada_carbono,
+                           media_intensidade_energetica=media_intensidade_energetica,
+                           media_gestao_residuos=media_gestao_residuos)
 
 # NOVA ROTA PARA PDF (Substituindo a de .doc)
 @app.route('/impacto/resumo.pdf')
